@@ -6,14 +6,15 @@ let checkpoint = 0;
 function salvarCheckpoint() {
     checkpoint = progresso;
 
-    console.log(`Checkpoint salvo! Ponto de progresso atual: ${checkpoint}`);
+    alert(`Checkpoint salvo! Ponto de progresso atual: ${checkpoint}`);
+    
 }
 
 // Função para carregar o checkpoint
 function carregarCheckpoint() {
     progresso = checkpoint;
 
-    console.log(`Checkpoint carregado! Progresso restaurado para: ${progresso}`);
+    alert(`Checkpoint carregado! Progresso restaurado para: ${progresso}`);
 }
 
 function intro() {
@@ -39,7 +40,8 @@ function intro() {
 }
 
 function inicio() {
-    let resposta = prompt(
+
+  let resposta = prompt(
         `Dorsa faz parte de uma família que valoriza muito a cultura esportiva. Seus pais perguntaram à menina se deseja experimentar um novo esporte: Badminton. Você deseja fazer uma aula experimental (digite 'SIM') ou não tem interesse (digite 'NAO').`
     );
 
@@ -55,17 +57,22 @@ function inicio() {
         resposta = prompt(
             `Uma nova etapa da jornada se inicia, Dorsa foi convidada para fazer parte da equipe de competição no clube o qual treina. Isso envolve treinar mais horas por dia e mais dias por semana🕙, você acha que vale a pena? Se sim ('SIM'), senão, ('NAO').`
         );
-
+        
+    
         conviteEquipeCompeticao(resposta);
-    } else if (resposta === "NAO") {
-        jogadorPerdeu();
-    } else {
-        alert(
-            `Não foi possível identificar a sua resposta, confira se ela está exatamente conforme o solicitado.`
-        );
 
-        inicio();
-    }
+    } else if (resposta === "NAO") {
+       
+      jogadorPerdeu();
+    
+    } else {
+        
+      alert( `Não foi possível identificar a sua resposta, confira se ela está exatamente conforme o solicitado.`);
+     
+      inicio();
+
+    }    
+
 }
 
 function conviteEquipeCompeticao(resposta) {
@@ -87,8 +94,10 @@ function conviteEquipeCompeticao(resposta) {
         );
 
         treinoEquipe(resposta);
+
     } else if (resposta === "NAO") {
-        progresso -= 1;
+        
+      progresso -= 1;
 
         salvarCheckpoint();
 
@@ -103,10 +112,9 @@ function conviteEquipeCompeticao(resposta) {
         rotinaTreinos(resposta);
     } else {
         alert(
-            `Não foi possível identificar a sua resposta, confira se ela está exatamente conforme o solicitado.`
-        );
+            `Não foi possível identificar a sua resposta, confira se ela está exatamente conforme o solicitado.`); 
 
-        conviteEquipeCompeticao(resposta);
+        inicio(resposta);
     }
 }
 
@@ -121,10 +129,11 @@ function rotinaTreinos(resposta) {
         );
 
         let resposta = prompt(
-            `No momento em que estava treinando, como forma de passa-tempo, Dorsa escuta barulhos horríveis, como bombas, e é nesse momento que ela percebe que a guerra se aproxima cada vez mais, tornando perigoso ficar ali. Você acha que é mais seguro para Dorsa fugir('F') ou permanecer no Irã ('P') enquanto algo mais sério não acontecer?`
+            `No momento em que estava treinando, como forma de passa-tempo, Dorsa escuta barulhos horríveis, como bombas, e é nesse momento que ela percebe que a guerra se aproxima cada vez mais, tornando perigoso ficar ali. Você acha que é mais seguro para Dorsa fugir('1') ou permanecer no Irã ('2') enquanto algo mais sério não acontecer?`
         );
 
         fuga(resposta);
+
     } else if (resposta === "INTENSO") {
         progresso += 1;
 
@@ -140,7 +149,7 @@ function rotinaTreinos(resposta) {
             `Não foi possível identificar a sua resposta, confira se ela está exatamente conforme o solicitado.`
         );
 
-        rotinaTreinos(resposta);
+        conviteEquipeCompeticao(resposta);
     }
 }
 
@@ -151,12 +160,14 @@ function treinoEquipe(resposta) {
         salvarCheckpoint();
 
         alert(
-            `Você se equivocou na sua quietaOUconta, Dorsa foi à festa e acabou bebendo, o que fez com que ela perdesse o treino do dia seguinte. Com isso, você acaba de perder 2 pontos de progresso, totalizando ${progresso} pontos.`
+            `Você se equivocou na sua decisão, Dorsa foi à festa e acabou bebendo, o que fez com que ela perdesse o treino do dia seguinte. Com isso, você acaba de perder 2 pontos de progresso, totalizando ${progresso} pontos.`
         );
 
         jogadorPerdeu();
+
     } else if (resposta === "T") {
-        progresso += 2;
+        
+      progresso += 2;
 
         inventario[2] = "Responsabilidade";
 
@@ -172,18 +183,19 @@ function treinoEquipe(resposta) {
             `Não foi possível identificar a sua resposta, confira se ela está exatamente conforme o solicitado.`
         );
 
-        treinoEquipe(resposta);
+        conviteEquipeCompeticao(resposta);
     }
 }
 
 function fuga(resposta) {
-    if (resposta === "P") {
+    if (resposta ==1) {
         alert(
             `Infelizmente, ao permanecer no Irã, os bombardeios continuaram se aproximando até atingir a sua vila, de maneira que acabou ficando soterrada pelos desmoronamentos que ocorreram, sem alternativas. A memória de Dorsa foi honrada em diversos memoriais e se tornou apenas mais um "e se.." dentro do esporte.💣`
         );
 
         jogadorPerdeu();
-    } else if (resposta === "F") {
+
+    } else if (resposta ==2) {
         progresso += 1;
 
         inventario[0] = "Resiliência";
@@ -236,11 +248,11 @@ function primeiraCompeticao(resposta) {
             `Não foi possível identificar a sua resposta, confira se ela está exatamente conforme o solicitado.`
         );
 
-        primeiraCompeticao(resposta);
+        treinoEquipe(resposta);
     }
 }
 
-function mudancaDeClube(resposta) {
+function primeiraCompeticao(resposta) {
     if (resposta === "SIM") {
         progresso += 2;
 
@@ -261,7 +273,7 @@ function mudancaDeClube(resposta) {
     } else if (resposta === "NAO") {
         progresso -= 1;
 
-        salvarCheckpoint();
+        carregarCheckpoint();
 
         alert(
             `Infelizmente, ao recusar a mudança de clube, Dorsa acabou não recebendo as oportunidades necessárias para crescer na carreira. Você perdeu 1 ponto de progresso, totalizando ${progresso} pontos.`
@@ -291,6 +303,7 @@ function conversaNPC(resposta) {
         let opcaoResposta = prompt(
             `Digite o número da resposta desejada:\n('1') Até parece! Você nunca iria perder comprando os juízes, você não tem vergonha de me falar isso?\n('2') É, realmente eu estava no meu dia naquela competição, e é uma honra poder treinar ao lado de uma jogadora tão qualificada!`
         );
+
         escolherResposta(opcaoResposta)
 
         
@@ -309,6 +322,8 @@ function conversaNPC(resposta) {
         alert(
             `Não foi possível identificar a sua resposta, confira se ela está exatamente conforme o solicitado.`
         );
+
+        primeiraCompeticao(resposta)
     }
 }
 
@@ -327,6 +342,7 @@ function escolherResposta(opcaoResposta){
 
     } else if (opcaoResposta == 2) {
 
+      inventario.push('Espírito Esportivo')
         contarSobreDiscussao()
     
     } else {
@@ -334,14 +350,14 @@ function escolherResposta(opcaoResposta){
             `Não foi possível identificar a sua resposta, confira se ela está exatamente conforme o solicitado.`
         );
 
-        conversaNPC();
+        conversaNPC(opcaoResposta);
     }
 
 }
 
 function contarSobreDiscussao(){
     
-    let confereInventario = inventario.includes("Espirito Esportivo");
+    let confereInventario = inventario.includes("Espírito Esportivo");
 
     if (confereInventario == true) {
         alert(
@@ -351,8 +367,10 @@ function contarSobreDiscussao(){
         oportunidadeOlimipica();
     } else {
         alert(
-            `Você não possui a caracterítica chave para colher os frutos de um bom Network.`
+            `Você não possui a característica chave: Espírito Esportivo.`
         );
+
+        escolherResposta()
     }
 
 }
@@ -370,17 +388,39 @@ function repercucaoDiscussao(quietaOUconta) {
 
         alert(`Dorsa conta ao treinador e desenvolve Honestidade, fazendo com que o treinador confie ainda mais nela. Ele expulsa Samira da equipe e te coloca como capitã no lugar dela. Cada vez mais você vem ajudando Dorsa a conquistar seu espaço no badminton.`)
 
-        oportunidadeOlimipica()
+        treinadorInscreveParaRefugiados()
     }else{
         
         alert(
             `Não foi possível identificar a sua resposta, confira se ela está exatamente conforme o solicitado.`
         );
+
+        escolherResposta()
     }
 }
 
 function oportunidadeOlimipica() {
-    alert(`AAAAAAAAA TESTEEEE`)
+    alert(`Samira: "Existe um camping de treinamento para quem deseja ir para as Olimpíadas e eu... BBUUMMMM!!!!🔫`)
+
+    alert(`A fala de Samira não termina antes que o seu corpo caia sobre Dorsa num estrondo. A guerra chegou ao clube, é então que percebe que precisa fugir do seu país agora! Não há mais como esperar, os vários corpos atingidos pelos tiros continuam caindo quando Dorsa começa a correr.💀`)
+
+    alert(`Dorsa corre da maneira mais rápida que consegue em direção à sua casa. Quando chega em sua rua, avista seus pais correndo em sua direção:\nMãe: "Minha querida! Por um momento achei que tinha te perdido! Vamos embora agora!"\nPai: "Consegui um voo para a Inglaterra e outro para a Síria, o que você quer fazer, Dorsa?`)
+
+    let resposta= prompt(`(1) Inglaterra🏴󠁧󠁢󠁥󠁮󠁧󠁿\n(2) Síria 🇸🇾`)
+
+    fuga(resposta)
+}
+
+function chegadaNoRefugio(){
+  alert (`Dorsa se dedicou muito nos 2 meses após da fuga do Síria para o abrigo de refugiados, você encontra Adnan Khankan, um judoca, que teve que fugir para o abrigo por causa da guerra em seu país. Vocês criaram uma amizade muito intensa, uma conexão rápida que surgiu a partir das semelhanças em suas histórias.`)
+
+  
+  
+  alert(`Vocês muito felizes e ansiosos decidem ir viajar juntos para a França.\nVocê ganha a emoção "Empatia" por desejar ir viajar junto com Dorsa. Como a viagem é muito longa, vocês conversaram muito, cada um contando suas histórias de infância e como conheceu seu devido esporte.`)
+}
+
+function treinadorInscreveParaRefugiados(){
+
 }
 
 function jogadorGanhou() {
@@ -429,3 +469,85 @@ intro(); // Inicia o jogo
 // dúvidas:
 // -checkpoint(como colocar em laço de repetição)
 // -else está voltando como laço infinito e não retornando para a função inicio()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

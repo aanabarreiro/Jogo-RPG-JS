@@ -19,7 +19,7 @@ function carregarCheckpoint() {
 
 function intro() {
     let resposta = prompt(
-        `⭢Bem-vindo ao Destino em Fuga! A incrível jornada de Dorsa Yavarivafa te aguarda e é você quem vai decidir se Dorsa realizará seu sonho ou acabará frustrada.\n⭢Digite '1' para ajudar nossa atleta a chegar ao Time Olímpico ou digite '2' para jogar em outro momento.`
+        `⭢Bem-vindo ao Destino em Fuga! A incrível jornada de Dorsa Yavarivafa te aguarda e é você quem vai decidir se ela realizará seu sonho ou acabará frustrada.\n⭢Digite '1' para ajudar nossa atleta a chegar ao Time Olímpico.\nDigite '2' para jogar em outro momento.\n⭢Digite '3' para acessar o manual.\n⭢Digite '4' para acessar a história da Protagonista.`
     );
 
     if (resposta == 1) {
@@ -28,9 +28,25 @@ function intro() {
         );
 
         inicio();
+
     } else if (resposta == 2) {
+        
         alert(`Que pena! Te aguardo em outro momento. Até mais!👋`);
+    
+    } else if(resposta==3){
+
+        alert(`📱 Você está em um jogo de RPG em texto, o qual acompanha a tragetória de Dorsa Yavarivafa. Ela vai se deparar com muitos desafios e depende somente de você para superá-los. \n💡 Durante a jornada, lembre-se de que Dorsa irá precisar de características chave, as quais ficarão armazenadas no Inventário, que ficará disponível para consulta no console do seu navegador. \n🏸 O objetivo principal do jogo é levar Dorsa às Olimpíadas, para isso, é preciso sacrificar alguns prazeres momentâneos, não se esqueça.\n🦉 Aproveite muito o jogo, e decida com sabedoria`)
+
+        intro()
+
+    } else if(resposta== 4){
+    
+    alert(`🏌️‍♀️Dorsa Yavarivafa é uma refugiada iraniana que ganhou destaque por sua resiliência e determinação, tanto no campo esportivo quanto em sua vida pessoal. Forçada a deixar o Irã devido à instabilidade e à busca por melhores oportunidades, Dorsa encontrou no esporte uma forma de se expressar e se fortalecer. Apesar das adversidades, ela continuou a lutar por seus sonhos e a se destacar como atleta. Sua história é um exemplo inspirador de coragem, superação e a busca incansável por um futuro melhor, mostrando ao mundo o poder da determinação em face da adversidade.🏌️‍♀️`)
+
+    intro()
+    
     } else {
+    
         alert(
             `Não foi possível identificar a sua resposta, confira se ela está exatamente conforme o solicitado.`
         );
@@ -414,20 +430,27 @@ function oportunidadeOlimipica() {
 function chegadaNoRefugio(){
   alert (`Dorsa se dedicou muito nos 2 meses após da fuga do Síria para o abrigo de refugiados, você encontra Adnan Khankan, um judoca, que teve que fugir para o abrigo por causa da guerra em seu país. Vocês criaram uma amizade muito intensa, uma conexão rápida que surgiu a partir das semelhanças em suas histórias.`)
 
+  alert(`Parabéns!🥳 Dorsa foi selecionada para as Olimpíadas, para a Equipe de Refugiados, isso é uma conquista incrível, e poder viver essa experiência ao lado do seu melhor amigo torna tudo ainda mais especial. Adnan, assim como Dorsa, também foi selecionado para realizar esse sonho. Os dois treinaram, se esforçaram e agora terão a chance de representar juntos o que há de melhor no esporte. Eles irão aproveitar cada momento, apoiando-se mutuamente e vivendo essa jornada com toda a energia e dedicação que trouxeram até aqui. Essa experiência não será apenas uma vitória pessoal, mas também um capítulo inesquecível na amizade dos dois!`)
   
-  
-  alert(`Vocês muito felizes e ansiosos decidem ir viajar juntos para a França.\nVocê ganha a emoção "Empatia" por desejar ir viajar junto com Dorsa. Como a viagem é muito longa, vocês conversaram muito, cada um contando suas histórias de infância e como conheceu seu devido esporte.`)
+  alert(`Dorsa e Adnan, muito felizes e ansiosos, decidem viajar juntos para a França.\nDorsa ganha a emoção "Amizade" por desejar viajar junto com Adnan. Como a viagem é muito longa, eles conversaram muito, cada um contando suas histórias de infância e como conheceram seus esportes, cada vez a conexão de vocês se torna mais forte.`)
+
+  jogadorGanhou()
 }
 
 function treinadorInscreveParaRefugiados(){
 
+    alert(`✈️É com imenso orgulho que informamos que a treinadora de Dorsa a encaminhou para as Olimpíadas de Paris 2024! Seu talento, dedicação e esforço não passaram despercebidos, e agora ela tem a oportunidade de representar seu país no maior evento esportivo do mundo. Paris será o palco dos seus sonhos, e tudo isso é resultado do trabalho árduo e da confiança que a treinadora depositou em Dorsa. Parabéns por essa conquista, e que venha Paris 2024!🗼`)
+
+    jogadorGanhou()
 }
 
 function jogadorGanhou() {
 
     alert(
-        `Parabéns!! Você conseguiu ajudar Dorsa a realizar o seu sonho de entrar para o Time Olímpico. 🏅 Com o seu auxílio, Dorsa desenvolveu características importantes para sua jornada: ${inventario.join(", ")}.`
+        `Parabéns!! Você conseguiu ajudar Dorsa a realizar o seu sonho de entrar para o Time Olímpico. 🏅Ela chegou às Olimpíadas,realizou seu maior sonho e trouxe esperança para muitas pessoas forçadas a sair do seu país de origem.\n🎒Com o seu auxílio, Dorsa desenvolveu características importantes para sua jornada: ${inventario.join(", ")}.`
     );
+
+    alert(`💗Espero que tenha gostado da sua experiência. Muito obrigada por jogar.\n💌Qualquer sugestão, entre em contato: @anabeatrizarteiro@gmail.com\n🌟Ana Beatriz Barreiro🌟`)
 }
 
 function jogadorPerdeu() {
@@ -468,7 +491,7 @@ intro(); // Inicia o jogo
 
 // dúvidas:
 // -checkpoint(como colocar em laço de repetição)
-// -else está voltando como laço infinito e não retornando para a função inicio()
+// comentar o código
 
 
 

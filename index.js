@@ -2,24 +2,10 @@ let progresso = 0;
 let inventario = [];
 let checkpoint = 0;
 
-// Função para salvar o checkpoint
-function salvarCheckpoint() {
-    checkpoint = progresso;
-
-    alert(`Checkpoint salvo! Ponto de progresso atual: ${checkpoint}`);
-    
-}
-
-// Função para carregar o checkpoint
-function carregarCheckpoint() {
-    progresso = checkpoint;
-
-    alert(`Checkpoint carregado! Progresso restaurado para: ${progresso}`);
-}
 
 function intro() {
     let resposta = prompt(
-        `⭢Bem-vindo ao Destino em Fuga! A incrível jornada de Dorsa Yavarivafa te aguarda e é você quem vai decidir se ela realizará seu sonho ou acabará frustrada.\n⭢Digite '1' para ajudar nossa atleta a chegar ao Time Olímpico.\nDigite '2' para jogar em outro momento.\n⭢Digite '3' para acessar o manual.\n⭢Digite '4' para acessar a história da Protagonista.`
+        `⭢Bem-vindo ao Destino em Fuga! A incrível jornada de Dorsa Yavarivafa te aguarda e é você quem vai decidir se ela realizará seu sonho ou acabará frustrada.\n⭢Digite '1' para ajudar nossa atleta a chegar ao Time Olímpico.\n⭢Digite '2' para jogar em outro momento.\n⭢Digite '3' para acessar o manual.\n⭢Digite '4' para acessar a história da Protagonista.`
     );
 
     if (resposta == 1) {
@@ -64,10 +50,10 @@ function inicio() {
     if (resposta === "SIM") {
         progresso += 1;
 
-        salvarCheckpoint();
+        checkpoint+= 1;
 
         alert(
-            `Uhuulll! Isso é ótimo! Dorsa fez a aula experimental e amou, além disso, demonstrou ter um talento notável no Badminton. Com essa quietaOUconta, você acabou de ganhar +1 ponto de progresso, o que te leva mais perto de realizar o seu sonho.\nVocê, atualmente, tem ${progresso} pontos de progresso.`
+            `Uhuulll! Isso é ótimo! Dorsa fez a aula experimental e amou, além disso, demonstrou ter um talento notável no Badminton. Com essa decisão, você acabou de ganhar +1 ponto de progresso, o que te leva mais perto de realizar o seu sonho.\nVocê, atualmente, tem ${progresso} pontos de progresso.`
         );
 
         resposta = prompt(
@@ -95,14 +81,14 @@ function conviteEquipeCompeticao(resposta) {
     if (resposta === "SIM") {
         progresso += 1;
 
-        salvarCheckpoint();
+        checkpoint+=1
 
         alert(
             "Bem-vindo à equipe! 🎉 Estão muito felizes em ter Dorsa com a equipe para essa jornada no badminton. Aqui, todos são apaixonados pelo esporte e estão sempre prontos para ajudar uns aos outros a crescer e melhorar. Dorsa sabe que pode contar com eles para o que precisar, seja para treinar, trocar ideias ou até para aqueles momentos de descontração. Vamos com tudo! 💪🏸"
         );
 
         alert(
-            `Com essa quietaOUconta, você ajudou Dorsa a se aproximar do Time Olímpico, por isso, ganhou +1 ponto de progresso totalizando, ${progresso} pontos.`
+            `Com essa decisão, você ajudou Dorsa a se aproximar do Time Olímpico, por isso, ganhou +1 ponto de progresso totalizando, ${progresso} pontos.`
         );
 
         let resposta = prompt(
@@ -115,7 +101,7 @@ function conviteEquipeCompeticao(resposta) {
         
       progresso -= 1;
 
-        salvarCheckpoint();
+     checkpoint+= 1
 
         alert(
             `Tudo bem, as vezes iniciar na vida de atleta competitivo é uma quietaOUconta complicada. Vamos esperar mais um pouco. Você acaba de perder 1 ponto na jornada olímpica, agora você possui ${progresso} pontos.`
@@ -130,7 +116,7 @@ function conviteEquipeCompeticao(resposta) {
         alert(
             `Não foi possível identificar a sua resposta, confira se ela está exatamente conforme o solicitado.`); 
 
-        inicio(resposta);
+        inicio();
     }
 }
 
@@ -138,7 +124,7 @@ function rotinaTreinos(resposta) {
     if (resposta === "HOBBIE") {
         progresso -= 1;
 
-        salvarCheckpoint();
+        checkpoint+= 1
 
         alert(
             `Sem ser vista pelos técnicos, Dorsa ficou mais distante de realizar o sonho olímpico, por isso, você perdeu 1 ponto de progresso, totalizando ${progresso}, mas ainda ama o esporte, portanto, continua se dedicando e treinando nas horas vagas.`
@@ -153,7 +139,7 @@ function rotinaTreinos(resposta) {
     } else if (resposta === "INTENSO") {
         progresso += 1;
 
-        salvarCheckpoint();
+        checkpoint+= 1;
 
         let resposta = prompt(
             `Os treinos intensivos foram ótimos, Dorsa vem melhorando cada vez mais e recebeu novamente o convite para entrar na equipe de Competição. Isso envolve treinar mais horas por dia e mais dias por semana, você acha que vale a pena? Se sim ('SIM'), senão, ('NAO').`
@@ -173,7 +159,7 @@ function treinoEquipe(resposta) {
     if (resposta === "F") {
         progresso -= 2;
 
-        salvarCheckpoint();
+        checkpoint+= 1;
 
         alert(
             `Você se equivocou na sua decisão, Dorsa foi à festa e acabou bebendo, o que fez com que ela perdesse o treino do dia seguinte. Com isso, você acaba de perder 2 pontos de progresso, totalizando ${progresso} pontos.`
@@ -187,7 +173,7 @@ function treinoEquipe(resposta) {
 
         inventario[2] = "Responsabilidade";
 
-        salvarCheckpoint();
+        checkpoint+= 1;
 
         let resposta = prompt(
             `Muito bem!! Para realizarmos nossos sonho, precisamos sacrificar algumas coisas que desejamos muito. Você acaba de ganhar mais pontos de progresso na sua trajetória, totalizando ${progresso} pontos de progresso.\nCom a sua dedicação, o seu treinador viu seu potencial e te chamou para representar seu clube na sua primeira competição. Você deseja ir? ('SIM') ('NAO')`
@@ -204,26 +190,28 @@ function treinoEquipe(resposta) {
 }
 
 function fuga(resposta) {
-    if (resposta ==1) {
+    if (resposta == 2) {
         alert(
-            `Infelizmente, ao permanecer no Irã, os bombardeios continuaram se aproximando até atingir a sua vila, de maneira que acabou ficando soterrada pelos desmoronamentos que ocorreram, sem alternativas. A memória de Dorsa foi honrada em diversos memoriais e se tornou apenas mais um "e se.." dentro do esporte.💣`
+            `Infelizmente, os bombardeios continuaram se aproximando até atingir a sua vila, de maneira que acabou ficando soterrada pelos desmoronamentos que ocorreram, sem alternativas. A memória de Dorsa foi honrada em diversos memoriais e se tornou apenas mais um "e se.." dentro do esporte.💣`
         );
 
         jogadorPerdeu();
 
-    } else if (resposta ==2) {
+    } else if (resposta ==1) {
         progresso += 1;
 
-        inventario[0] = "Resiliência";
+        inventario.push('Resiliência');
 
-        salvarCheckpoint();
+        checkpoint+= 1;
 
-        let resposta = prompt(
-            `Boa quietaOUconta! A mais segura possível, tendo em vista a situação. Dorsa desenvolveu ${inventario[0]}, item que agora está armazenado na sua mochila de características. Dorsa pode fugir para a Inglaterra ('I') ou pode ir para Síria ('S'), qual você prefere?`
+        let destino = prompt(
+            `Boa decisão! A mais segura possível, tendo em vista a situação. Dorsa desenvolveu ${inventario}, itens que agora está armazenado na sua mochila de características.`
         );
 
-        chegadaNoRefugio(resposta);
+        chegadaNoRefugio()
+ 
     } else {
+   
         alert(
             `Não foi possível identificar a sua resposta, confira se ela está exatamente conforme o solicitado.`
         );
@@ -238,7 +226,7 @@ function primeiraCompeticao(resposta) {
 
         inventario[1] = "Coragem";
 
-        salvarCheckpoint();
+        checkpoint+= 1;
 
         alert(
             `Dorsa foi à competição e fez um ótimo trabalho🥳 \nEla conquistou a medalha de bronze na sua primeira competição🎖, mas isso aconteceu pois a menina que competiu contra Dorsa (Samira) havia comprado a arbitragem para que eles a ajudassem.\nVocê também ganhou um ponto de progresso, totalizando ${progresso} pontos. Além disso, ela desenvolveu ${inventario[1]}, item que agora está armazenado na sua mochila de características.`
@@ -252,7 +240,7 @@ function primeiraCompeticao(resposta) {
     } else if (resposta === "NAO") {
         progresso -= 1;
 
-        salvarCheckpoint();
+        checkpoint+= 1;
 
         alert(
             `Ao recusar a competição, Dorsa foi vista como alguém sem espírito competitivo, dificultando sua permanência na equipe e, como consequência, foi afastada da equipe. Você perdeu 1 ponto de progresso, totalizando ${progresso} pontos.`
@@ -272,7 +260,7 @@ function primeiraCompeticao(resposta) {
     if (resposta === "SIM") {
         progresso += 2;
 
-        salvarCheckpoint();
+        checkpoint+= 1;
 
         inventario[3] = "Autoconhecimento";
 
@@ -289,7 +277,7 @@ function primeiraCompeticao(resposta) {
     } else if (resposta === "NAO") {
         progresso -= 1;
 
-        carregarCheckpoint();
+        checkpoint+= 1;
 
         alert(
             `Infelizmente, ao recusar a mudança de clube, Dorsa acabou não recebendo as oportunidades necessárias para crescer na carreira. Você perdeu 1 ponto de progresso, totalizando ${progresso} pontos.`
@@ -327,10 +315,10 @@ function conversaNPC(resposta) {
     else if (resposta == 2) {
 
         progresso -= 1
+        checkpoint+= 1
 
         alert(`Com medo de que Dorsa contassse aos treinadores sobre a compra da arbitragem, a capitã, Samira, retirou o nome de Dorsa da relação da equipe, fazendo com que os treinadores resconsiderassem o convite e a recusassem no clube. Com isso, você acaba de perder 1 ponto de progresso. Totalizando: ${progresso} pontos.`)
 
-        salvarCheckpoint()
         jogadorPerdeu()
 
     } else {
@@ -358,7 +346,10 @@ function escolherResposta(opcaoResposta){
 
     } else if (opcaoResposta == 2) {
 
-      inventario.push('Espírito Esportivo')
+        inventario.push('Espírito Esportivo')
+
+        checkpoint+= 1
+        
         contarSobreDiscussao()
     
     } else {
@@ -394,7 +385,10 @@ function contarSobreDiscussao(){
 function repercucaoDiscussao(quietaOUconta) {
 
     if (quietaOUconta == 1) {
-        //ficar quieta para manter a vaga
+
+        alert(`Dorsa decidiu não contar nada para tentar manter sua vaga, mas com isso, o treinador descobre o que aconteceu e passa a não confiar nela. Com isso, ela perde a vaga na equipe de competição, fica desmotivada e acaba desistindo do badminton.`)
+
+        jogadorPerdeu()
     }
     else if (quietaOUconta == 2) {
 
@@ -428,7 +422,7 @@ function oportunidadeOlimipica() {
 }
 
 function chegadaNoRefugio(){
-  alert (`Dorsa se dedicou muito nos 2 meses após da fuga do Síria para o abrigo de refugiados, você encontra Adnan Khankan, um judoca, que teve que fugir para o abrigo por causa da guerra em seu país. Vocês criaram uma amizade muito intensa, uma conexão rápida que surgiu a partir das semelhanças em suas histórias.`)
+  alert (`Dorsa se dedicou muito nos 2 meses após da fuga do Irã para o abrigo de refugiados, você encontra Adnan Khankan, um judoca, que teve que fugir para o abrigo por causa da guerra em seu país. Vocês criaram uma amizade muito intensa, uma conexão rápida que surgiu a partir das semelhanças em suas histórias.`)
 
   alert(`Parabéns!🥳 Dorsa foi selecionada para as Olimpíadas, para a Equipe de Refugiados, isso é uma conquista incrível, e poder viver essa experiência ao lado do seu melhor amigo torna tudo ainda mais especial. Adnan, assim como Dorsa, também foi selecionado para realizar esse sonho. Os dois treinaram, se esforçaram e agora terão a chance de representar juntos o que há de melhor no esporte. Eles irão aproveitar cada momento, apoiando-se mutuamente e vivendo essa jornada com toda a energia e dedicação que trouxeram até aqui. Essa experiência não será apenas uma vitória pessoal, mas também um capítulo inesquecível na amizade dos dois!`)
   
@@ -447,10 +441,34 @@ function treinadorInscreveParaRefugiados(){
 function jogadorGanhou() {
 
     alert(
-        `Parabéns!! Você conseguiu ajudar Dorsa a realizar o seu sonho de entrar para o Time Olímpico. 🏅Ela chegou às Olimpíadas,realizou seu maior sonho e trouxe esperança para muitas pessoas forçadas a sair do seu país de origem.\n🎒Com o seu auxílio, Dorsa desenvolveu características importantes para sua jornada: ${inventario.join(", ")}.`
+        `Parabéns!! Você conseguiu ajudar Dorsa a realizar o seu sonho de entrar para o Time Olímpico. 🏅Ela chegou às Olimpíadas,realizou seu maior sonho e trouxe esperança para muitas pessoas forçadas a sair do seu país de origem.\n🎒Com o seu auxílio, Dorsa desenvolveu características importantes para sua jornada: ${inventario.join(" ")}.`
     );
 
     alert(`💗Espero que tenha gostado da sua experiência. Muito obrigada por jogar.\n💌Qualquer sugestão, entre em contato: @anabeatrizarteiro@gmail.com\n🌟Ana Beatriz Barreiro🌟`)
+
+    let reiniciar= prompt(`Deseja encerrar o jogo ou jogar novamente?\n🚩(1) Encerrar\n🏳️ (2) Reiniciar`)
+
+    if(reiniciar== 2){
+        
+        progresso= 0
+        
+        inventario= []
+        
+        intro()
+
+    }else if(reiniciar==1){
+
+        progresso= 0
+
+        inventario=[]
+
+
+    } else {
+
+        alert(`Não foi possível identificar a sua resposta, confira se ela está exatamente conforme o solicitado.`);
+
+        jogadorGanhou();
+    }
 }
 
 function jogadorPerdeu() {
@@ -460,10 +478,18 @@ function jogadorPerdeu() {
     );
 
     if (resposta == 1) {
-        carregarCheckpoint();
+        
+        while(checkpoint<= 3){
+            
+            inicio()
+        
+        }
+        
+        progresso= 0
 
-        inicio(); // Recomeça a partir do início com o progresso salvo.
-
+        conversaNPC(resposta= 1)
+        
+        
     } else if (resposta == 2) {
 
         alert("Você não conseguiu ajudar Dorsa, mas não desista! Até mais👋");
@@ -488,89 +514,3 @@ function jogadorPerdeu() {
 }
 
 intro(); // Inicia o jogo
-
-// dúvidas:
-// -checkpoint(como colocar em laço de repetição)
-// comentar o código
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

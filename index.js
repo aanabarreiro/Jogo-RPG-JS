@@ -219,7 +219,7 @@ function fuga(resposta) {// Função que lida com a decisão de fugir ou permane
 
         checkpoint += 1;
 
-        let destino = prompt(
+        alert(
             `Boa decisão! A mais segura possível, tendo em vista a situação. Dorsa desenvolveu ${inventario}, itens que agora estão armazenados no seu inventário de características.`
         );
 

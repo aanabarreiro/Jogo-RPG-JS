@@ -494,7 +494,7 @@ function jogadorPerdeu() {// Função que exibe a mensagem de derrota
 
     if (resposta == 1) {
 
-        while (checkpoint <= 4) {
+        while (checkpoint <= 4) { //Se o jogador tiver tingido determinada pontuação no jogo, ele retorna para a metade do jogo, caso contrário, ele retorna para o início.
 
             checkpoint=0
             inventario=[]
